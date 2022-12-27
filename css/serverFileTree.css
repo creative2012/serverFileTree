@@ -101,7 +101,6 @@ ul{
     margin: 0;
     display: grid;
     grid-template-columns: auto 3fr;
-    min-height: 500px;
     position: relative;
     height: calc(100vh - 20px);
     border-width: 1px;
@@ -125,9 +124,9 @@ ul{
     font-style: italic;
     position: fixed;
     top: 9px;
-    margin-left: 20px;
+    padding-left: 20px;
     background: white;
     width: 70%;
     padding-top: 10px;
-
+    padding-bottom: 10px;
   }
