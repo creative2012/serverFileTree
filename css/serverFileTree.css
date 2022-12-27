@@ -103,7 +103,7 @@ ul{
     grid-template-columns: auto 3fr;
     min-height: 500px;
     position: relative;
-    height: 100%;
+    height: calc(100vh - 20px);
     border-width: 1px;
     border-color: gray;
     border-style: solid;
@@ -113,10 +113,21 @@ ul{
     border-left-width: 1px;
     border-left-color: gray;
     border-left-style: solid;
+    overflow: auto;
     /* padding: 10px; */
+  }
+  #fileList{
+    padding-top: 20px;
   }
   #crumbs{
     margin-bottom: 20px;
     font-weight: lighter;
     font-style: italic;
+    position: fixed;
+    top: 9px;
+    margin-left: 20px;
+    background: white;
+    width: 70%;
+    padding-top: 10px;
+
   }

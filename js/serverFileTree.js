@@ -1,9 +1,6 @@
 var folders = {};
-var id ='';
+var id = '';
 function createNodes(x) {
-
-
-
 
     $.each(x.reverse(), function () {
 
@@ -55,7 +52,7 @@ function createNodes(x) {
 
             currentDiv.appendChild(newLi).appendChild(newSp);
             newLi.appendChild(newDiv);
-            folders[this.id+'F'] = this.path.replace('../request/Sites/', '');
+            folders[this.id + 'F'] = this.path.replace('../request/Sites/', '');
 
 
 
@@ -67,7 +64,7 @@ function createNodes(x) {
     for (i = 0; i < toggler.length; i++) {
         toggler[i].addEventListener("click", function () {
             id = this.id;
-            
+
 
             if (!this.classList.contains("activeCaret")) {
                 var test = document.querySelectorAll("[data-group]");
@@ -128,17 +125,17 @@ function createNodes(x) {
                 }).done(function (message) {
                     // console.log(message);
                     addFiles(message);
-                    document.getElementById('crumbs').innerText = '...'+folders[id].replace(/\//g, ' / ');
+                    document.getElementById('crumbs').innerText = '...' + folders[id].replace(/\//g, ' / ');
 
                 }).fail(function (message) {
                     console.log('fail');
                 })
-            }            
+            }
 
         });
 
-        
-            
+
+
     }
 
 };
@@ -152,7 +149,7 @@ function addFiles(x) {
     const currentDiv = document.getElementById('fileList');
     const crumbs = document.createElement("div");
     crumbs.setAttribute('id', 'crumbs');
-    currentDiv.appendChild(crumbs);
+    currentDiv1.appendChild(crumbs);
 
 
     $.each(x, function () {
