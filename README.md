@@ -8,9 +8,9 @@ simple tree view for a specified server folder
 
 ## Usage
 
-![To use edit the serverFileTree.js and change the path variable to your folder structure. The first folder will be the title of the page]
-
-
+The following image shows the web application's appearance and functionality:
+> **Note**: To use: edit the serverFileTree.js and change the path variable to your folder structure. The first folder will be the title of the page.
+![To use: edit the serverFileTree.js and change the path variable to your folder structure. The first folder will be the title of the page.](icons/screen.png)
 ## License
 
 MIT License
