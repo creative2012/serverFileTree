@@ -7,9 +7,11 @@ function createNodes(x) {
 
         if (this.parent == 'root') {
             // create a new div element
+            const nav = document.createElement("nav");
             const newDiv = document.createElement("ul");
             const newDiv2 = document.createElement("div");
 
+            nav.setAttribute('id', 'navigation');
             newDiv.setAttribute('id', this.id);
             newDiv2.setAttribute('id', 'fileView');
 
@@ -18,12 +20,14 @@ function createNodes(x) {
             const newContent = document.createTextNode(this.node);
 
             // add the text node to the newly created div
-            newDiv.appendChild(newContent);
+            const span = document.createElement("div");
+            nav.appendChild(span).appendChild(newContent);
 
             // add the newly created element and its content into the DOM
             const currentDiv = document.getElementById("container");
 
-            currentDiv.appendChild(newDiv);
+            currentDiv.appendChild(nav);
+            nav.appendChild(newDiv);
             currentDiv.appendChild(newDiv2);
 
         }
@@ -162,6 +166,7 @@ function addFiles(x) {
         // and give it some content
         const newLink = document.createElement('a');
         newLink.setAttribute('href', this.link);
+        newLink.setAttribute('target', '_blank');
         const newContent = document.createTextNode(this.name);
         const newInfo = document.createElement('span');
         const infoContent = document.createTextNode(formatBytes(this.size));
