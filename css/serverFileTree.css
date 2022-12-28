@@ -191,4 +191,5 @@ nav{
   padding-bottom: 10px;
   border-bottom: 1px solid lightgray;
   border-left: 1px dashed black;
+  margin-left: -1px;
 }
