@@ -164,7 +164,7 @@ function addFiles(x) {
         newLink.setAttribute('href', this.link);
         const newContent = document.createTextNode(this.name);
         const newInfo = document.createElement('span');
-        const infoContent = document.createTextNode(' Size: '+this.size);
+        const infoContent = document.createTextNode(formatBytes(this.size));
 
         // add the text node to the newly created div
         newLink.appendChild(newContent);
@@ -177,6 +177,17 @@ function addFiles(x) {
     });
 
 
+}
+function formatBytes(bytes, decimals = 2) {
+    if (!+bytes) return '0 Bytes'
+
+    const k = 1024
+    const dm = decimals < 0 ? 0 : decimals
+    const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
+
+    const i = Math.floor(Math.log(bytes) / Math.log(k))
+
+    return `${parseFloat((bytes / Math.pow(k, i)).toFixed(dm))} ${sizes[i]}`
 }
 $(document).ready(function () {
     $.ajax({

@@ -88,9 +88,10 @@ ul{
 }
 .file span{
   margin-left: 20px;
+  text-align: right;
 }
 .file a{
-  grid-template-columns: minmax(300px, auto) 100px;
+  grid-template-columns: minmax(300px, auto) minmax(100px, auto) ;
   display: grid;
 }
 .activeCaret::before {
