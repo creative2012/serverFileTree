@@ -81,12 +81,12 @@ function createNodes(x) {
                     this.style.border = "";
                     this.style.padding = "";
                     if (this.classList.contains("activeCaret") && this.getAttribute('data-parent') != rootNode
-                    && this.getAttribute('id') != id) {
+                     && this.getAttribute('data-parent')+'F' == id) {
                         this.classList.toggle("activeCaret");
 
                     }
                     if (this.classList.contains("activeCaret") && this.getAttribute('data-parent') == rootNode
-                    && this.getAttribute('id') != id && this.getAttribute('data-group') != value) {
+                    && this.getAttribute('data-group') != value ) {
                         this.classList.toggle("activeCaret");
 
                     }
