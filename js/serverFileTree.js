@@ -123,7 +123,7 @@ function createNodes(x) {
                         path: this.getAttribute("data"),
                     },
                 }).done(function (message) {
-                    // console.log(message);
+                    console.log(message);
                     addFiles(message);
                     document.getElementById('crumbs').innerText = '...' + folders[id].replace(/\//g, ' / ');
 
@@ -163,13 +163,15 @@ function addFiles(x) {
         const newLink = document.createElement('a');
         newLink.setAttribute('href', this.link);
         const newContent = document.createTextNode(this.name);
-
+        const newInfo = document.createElement('span');
+        const infoContent = document.createTextNode(' Size: '+this.size);
 
         // add the text node to the newly created div
         newLink.appendChild(newContent);
+        newInfo.appendChild(infoContent);
 
         // add the newly created element and its content into the DOM 
-        currentDiv.appendChild(newDiv).appendChild(newLink);
+        currentDiv.appendChild(newDiv).appendChild(newLink).appendChild(newInfo);
 
 
     });
