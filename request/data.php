@@ -18,6 +18,7 @@ function getFolderContent($dir)
                 'parent' => $GLOBALS['parent'],
                 'group' => $GLOBALS['group'],
                 'node' => basename($dir.'/'),
+                'test' => scandir($dir),
                 'path' => $dir,
             );
 
@@ -35,10 +36,57 @@ function getFolderContent($dir)
                     } 
                     if($type == 'dir')
                     {
-                        //recursivly open nested directory
+                        
                         $GLOBALS['parent'] = $id;
-                        getFolderContent($dir.'/'.$file);
+                        getFolderContentMore($dir.'/'.$file);
                         $GLOBALS['group'] = '';
+                    }
+                      
+                }
+            }
+
+                //add all nodes
+                array_push($GLOBALS['node'], $node1);
+
+            closedir($dh);
+        }
+    }
+}
+function getFolderContentMore($dir)
+{
+    
+    $children = array();
+    // Open a directory, and read its contents
+    if (is_dir($dir))
+    {
+        if ($dh = opendir($dir))
+        {
+            $id = uniqid();
+            $node1 = array(
+                'id' => $id,
+                'parent' => $GLOBALS['parent'],
+                'group' => $GLOBALS['group'],
+                'node' => basename($dir.'/'),
+                'test' => scandir($dir),
+                'path' => $dir,
+            );
+
+
+            while (($file = readdir($dh)) !== false)
+            {
+
+                if($file != '.' && $file != '..') 
+                {
+                    //Get file info
+                    $path_parts = pathinfo($dir.'/'.$file);
+                    $type = filetype($dir.'/'.$file);
+             
+                    if($type == 'dir')
+                    {
+                        
+                        $GLOBALS['parent'] = $id;
+                        getFolderContentMore($dir.'/'.$file);
+                        
                     }
                       
                 }
@@ -103,6 +151,7 @@ if(isset($_GET['folders'] ) ){
 
 getFolderContent($_GET['path']);
 echo json_encode($node);
+
 
 } else if (isset($_GET['files'] )){
 

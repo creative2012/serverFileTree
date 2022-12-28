@@ -19,7 +19,7 @@
     background-image:url(../sql.png);
 }
 .ft_png{
-    background-image:url(../pnh.png);
+    background-image:url(../png.png);
 }
 .ft_jpg{
     background-image:url(../jpg.png);
@@ -31,12 +31,14 @@
 .ft_gif{
     background-image:url(../gif.png);
 }
+.ft_css{
+    background-image:url(../css.png);
+}
 
 .ft_txt,
 .ft_js,
 .ft_ini,
-.ft_bat,
-.ft_css{
+.ft_bat{
     background-image:url(../txt.png);
 }
 

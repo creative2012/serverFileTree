@@ -1,6 +1,7 @@
 const path = 'Sites';
 var folders = {};
 var id = '';
+var rootNode = ''
 function createNodes(x) {
 
     $.each(x.reverse(), function () {
@@ -11,7 +12,7 @@ function createNodes(x) {
             const nav = document.createElement("nav");
             const newDiv = document.createElement("ul");
             const newDiv2 = document.createElement("div");
-
+            rootNode = this.id;
             nav.setAttribute('id', 'navigation');
             newDiv.setAttribute('id', this.id);
             newDiv2.setAttribute('id', 'fileView');
@@ -79,15 +80,24 @@ function createNodes(x) {
                 $.each(test, function () {
                     this.style.border = "";
                     this.style.padding = "";
-                    if (this.getAttribute('data-group') != value && this.getAttribute('data-group') != value + 'F') {
-                        if (this.classList.contains("activeCaret")) {
-                            this.classList.toggle("activeCaret");
+                    if (this.classList.contains("activeCaret") && this.getAttribute('data-parent') != rootNode
+                    && this.getAttribute('id') != id) {
+                        this.classList.toggle("activeCaret");
 
-                        }
+                    }
+                    if (this.classList.contains("activeCaret") && this.getAttribute('data-parent') == rootNode
+                    && this.getAttribute('id') != id && this.getAttribute('data-group') != value) {
+                        this.classList.toggle("activeCaret");
+
+                    }
+
+                    if (this.getAttribute('data-group') != value && this.getAttribute('data-group') != value + 'F') {
+                        
                         if (this.classList.contains("active")) {
                             this.classList.toggle("active");
 
                         }
+                       
 
                     }
 
@@ -102,6 +112,7 @@ function createNodes(x) {
                             this.classList.toggle("active");
 
                         }
+                        
 
                     }
                 });
@@ -145,7 +156,7 @@ function createNodes(x) {
 
 };
 function addFiles(x) {
-    
+
 
     const currentDiv1 = document.getElementById('fileView');
     const newDiv1 = document.createElement("ul");
@@ -169,7 +180,7 @@ function addFiles(x) {
         newLink.setAttribute('href', this.link);
         newLink.setAttribute('target', '_blank');
         const newIcon = document.createElement('div');
-        newIcon.setAttribute('class','ft_'+this.ext);
+        newIcon.setAttribute('class', 'ft_' + this.ext);
         const newContent = document.createTextNode(this.name);
         const newInfo = document.createElement('span');
         const infoContent = document.createTextNode(formatBytes(this.size));
@@ -205,13 +216,13 @@ $(document).ready(function () {
         dataType: "json",
         data: {
             folders: true,
-            path: '../request/'+path,
+            path: '../request/' + path,
         },
     }).done(function (message) {
-        // console.log(message);
+        console.log(message);
         createNodes(message);
 
-        
+
     }).fail(function (message) {
         console.log('fail');
     })
