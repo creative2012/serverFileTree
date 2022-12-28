@@ -1,3 +1,4 @@
+const path = 'Sites';
 var folders = {};
 var id = '';
 function createNodes(x) {
@@ -56,7 +57,7 @@ function createNodes(x) {
 
             currentDiv.appendChild(newLi).appendChild(newSp);
             newLi.appendChild(newDiv);
-            folders[this.id + 'F'] = this.path.replace('../request/Sites/', '');
+            folders[this.id + 'F'] = this.path.replace('../request/', '');
 
 
 
@@ -127,9 +128,9 @@ function createNodes(x) {
                         path: this.getAttribute("data"),
                     },
                 }).done(function (message) {
-                    console.log(message);
+                    // console.log(message);
                     addFiles(message);
-                    document.getElementById('crumbs').innerText = '...' + folders[id].replace(/\//g, ' / ');
+                    document.getElementById('crumbs').innerText = '...' + folders[id].replace(/\//g, ' > ');
 
                 }).fail(function (message) {
                     console.log('fail');
@@ -144,7 +145,7 @@ function createNodes(x) {
 
 };
 function addFiles(x) {
-
+    
 
     const currentDiv1 = document.getElementById('fileView');
     const newDiv1 = document.createElement("ul");
@@ -167,6 +168,8 @@ function addFiles(x) {
         const newLink = document.createElement('a');
         newLink.setAttribute('href', this.link);
         newLink.setAttribute('target', '_blank');
+        const newIcon = document.createElement('div');
+        newIcon.setAttribute('class','ft_'+this.ext);
         const newContent = document.createTextNode(this.name);
         const newInfo = document.createElement('span');
         const infoContent = document.createTextNode(formatBytes(this.size));
@@ -176,6 +179,7 @@ function addFiles(x) {
         newInfo.appendChild(infoContent);
 
         // add the newly created element and its content into the DOM 
+        currentDiv.appendChild(newDiv).appendChild(newIcon);
         currentDiv.appendChild(newDiv).appendChild(newLink).appendChild(newInfo);
 
 
@@ -201,12 +205,13 @@ $(document).ready(function () {
         dataType: "json",
         data: {
             folders: true,
+            path: '../request/'+path,
         },
     }).done(function (message) {
         // console.log(message);
         createNodes(message);
 
-        // $('p').append(message[0].parent);
+        
     }).fail(function (message) {
         console.log('fail');
     })

@@ -70,11 +70,11 @@ function getFiles($dir)
                     $type = filetype($dir.'/'.$file);
                     $fileName  = $path_parts['filename'];
                     
-                    // check if nested directory
+                    // check is not dir
                     if($type != 'dir')
                     {
 
-                        //create children object
+                        //create children array
                         $extension = $path_parts['extension'];
                         $list3 = array(
                             'name' => $fileName, 
@@ -94,18 +94,19 @@ function getFiles($dir)
             closedir($dh);
         }
     }
+    
     return $files;
 
 }
 
 if(isset($_GET['folders'] ) ){
 
-getFolderContent('../request/Sites');
+getFolderContent($_GET['path']);
 echo json_encode($node);
 
 } else if (isset($_GET['files'] )){
 
-$files = getFiles($_GET['path']);
+$files = getFiles($_GET['path']); 
 echo json_encode($files);
 }
 

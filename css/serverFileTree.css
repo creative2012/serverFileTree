@@ -42,7 +42,15 @@ ul{
     display: inline-block;
     margin-right: 6px;
   }
-  .file::before {
+  li div{
+    width: 32px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 30px;
+    margin-top: -5px;
+  }
+  /* .file::before {
     content: '\f15b';
     font-family: FontAwesome;
     color: green;
@@ -50,7 +58,7 @@ ul{
     display: inline-block;
     margin-right: 6px;
     margin-left: 10px;
-  }
+  } */
   #navigation div{
     padding-left: 20px;
     padding-top: 10px;
@@ -88,6 +96,7 @@ ul{
     white-space:nowrap;
     border-bottom: 1px lightgrey solid;
     padding-bottom: 10px;
+    padding-top: 5px;
     
 }
 .file:hover > a{

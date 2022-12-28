@@ -1,0 +1,54 @@
+.ft_file{
+    background-image:url(../_blank.png);
+}
+.ft_pdf{
+    background-image:url(../pdf.png);
+}
+.ft_xls{
+    background-image:url(../xls.png);
+}
+
+.ft_php{
+    background-image:url(../php.png);
+}
+
+.ft_exe,.ft_msi{
+    background-image:url(../exe.png);
+}
+.ft_db,.ft_sql{
+    background-image:url(../sql.png);
+}
+.ft_png{
+    background-image:url(../pnh.png);
+}
+.ft_jpg{
+    background-image:url(../jpg.png);
+}
+
+.ft_bmp{
+    background-image:url(../bmp.png);
+}
+.ft_gif{
+    background-image:url(../gif.png);
+}
+
+.ft_txt,
+.ft_js,
+.ft_ini,
+.ft_bat,
+.ft_css{
+    background-image:url(../txt.png);
+}
+
+.ft_htm,
+.ft_xml,
+.ft_html{
+    background-image:url(../html.png);
+}
+
+.ft_rar{
+    background-image:url(../rar.png);
+}
+.ft_zip{
+    background-image:url(../zip.png);
+}
